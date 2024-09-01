@@ -1,4 +1,4 @@
-# How-To-Make-Ping-Swipper
+# How-To-Make-Ping-Swipper CyberSecurity projects beginner level
 _This bash script automates the process of IP scanning by simultaneously pinging a range of IP addresses. It sequentially runs Nmap scans on each IP address, streamlining the automation of network scanning tasks._
 
 Take any random ip address , in this case i will take my own ip address which i will get using ifconfig command :
