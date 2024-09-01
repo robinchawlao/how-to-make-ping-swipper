@@ -165,6 +165,8 @@ We can use this program in ' nmap scanning ' This Command below will run the Sca
 for ip in $(cat ip.txt); do nmap $ip& done
 ```
 So, this was the whole process to write a bash script to make a PING SWIPPER.
+
+
 < ----------------------------------------------------------------------------------------------------->
 
 
