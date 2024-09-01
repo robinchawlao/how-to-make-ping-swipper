@@ -45,7 +45,7 @@ Some commands to know before starting scripting :
 
 So the final command after combining all these will be:-
 
-```sh
+```
 cat ip.txt | grep "64 bytes" | cut -d " " -f 4 | tr -d " : "
 ```
 
@@ -101,9 +101,13 @@ cmd for that will be:
 chmod +x ipsweep.sh
 ```
 
-| chmod                   | Changing mod - giving or removing read write execute permissions. |
-| +x                      | means granting execution permissions |
-| ipseep.sh               | Name of your ping swipper |
+                 
+
+| chmod | Changing mod - giving or removing read write execute permissions. |
+| ------ | ------ |
+| +x | means granting execution permissions  |
+| ipseep.sh  | Name of your ping swipper |
+
 
 You can search for chmod to learn more things.
 
