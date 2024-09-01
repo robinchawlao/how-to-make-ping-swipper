@@ -61,4 +61,62 @@ We will write a for loop in our editor which will be continuosly changing the ip
 ```
 #!/bin/bash
 // declaring that it's a bash script
+ping -c 1 10.0.2.15| cat ip.txt | grep "64 bytes" | cut -d " " -f 4 | tr -d " : "
+```
+In next Step, We have to write a for loop for continuosly changing the value of the last octect of ip addresses from 1 to 254
+Now, our program will look like :-
+
+```
+#!/bin/bash
+for ip in `seq 1 254`;do
+ping -c 1 10.0.2.15| cat ip.txt | grep "64 bytes" | cut -d " " -f 4 | tr -d " : "&
+done
+```
+how to run our ping sweep in kali, the cmd will be :-
+```
+./ipsweep.sh $1 $2 
+```
+Note:
+ 1. So, we can provide different arguments value to our program like this.
+ 2. $0 ->  ./ipsweep.sh  (that's why second operation starts from $1)
+ 3. On the time of running ping swipper: first three octet will be defined by $1 (10.0.2 -> $1)
+ 
+Updated program will look like :-
+
+```
+#!/bin/bash
+for ip in `seq 1 254`;do
+ping -c 1 $1.$ip| cat ip.txt | grep "64 bytes" | cut -d " " -f 4 | tr -d " : "&
+done
+```
+kali Cmd:
+```
+// this helps specifying multiplle network easily.
+./ipsweep.sh 10.0.2
+```
+
+Always remenber to change permissions our program must need execution permissions :-
+cmd for that will be:
+```
+chmod +x ipsweep.sh
+```
+
+| chmod                   | Changing mod - giving or removing read write execute permissions. |
+| +x                      | means granting execution permissions |
+| ipseep.sh               | Name of your ping swipper |
+
+You can search for chmod to learn more things.
+
+```
+// to check if our program got the permission or not, we will use
+ls -la
+```
+
+
+
+
+
+
+
+
 
