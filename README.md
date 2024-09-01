@@ -61,7 +61,7 @@ We will write a for loop in our editor which will be continuosly changing the ip
 ```
 #!/bin/bash
 // declaring that it's a bash script
-ping -c 1 10.0.2.15| cat ip.txt | grep "64 bytes" | cut -d " " -f 4 | tr -d " : "
+ping -c 1 10.0.2.15| grep "64 bytes" | cut -d " " -f 4 | tr -d " : "
 ```
 In next Step, We have to write a for loop for continuosly changing the value of the last octect of ip addresses from 1 to 254
 Now, our program will look like :-
@@ -69,7 +69,7 @@ Now, our program will look like :-
 ```
 #!/bin/bash
 for ip in `seq 1 254`;do
-ping -c 1 10.0.2.15| cat ip.txt | grep "64 bytes" | cut -d " " -f 4 | tr -d " : "&
+ping -c 1 10.0.2.15| grep "64 bytes" | cut -d " " -f 4 | tr -d " : "&
 done
 ```
 how to run our ping sweep in kali, the cmd will be :-
@@ -86,7 +86,7 @@ Updated program will look like :-
 ```
 #!/bin/bash
 for ip in `seq 1 254`;do
-ping -c 1 $1.$ip| cat ip.txt | grep "64 bytes" | cut -d " " -f 4 | tr -d " : "&
+ping -c 1 $1.$ip | grep "64 bytes" | cut -d " " -f 4 | tr -d " : "&
 done
 ```
 kali Cmd:
@@ -100,11 +100,12 @@ cmd for that will be:
 ```
 chmod +x ipsweep.sh
 ```
-                 
+| Commmands | Working |                 
 | ------ | ------ |
 | chmod | Changing mod - giving or removing read write execute permissions. |
 | +x | means granting execution permissions  |
 | ipseep.sh  | Name of your ping swipper |
+
 
 
 You can search for chmod to learn more things.
@@ -113,7 +114,41 @@ You can search for chmod to learn more things.
 // to check if our program got the permission or not, we will use
 ls -la
 ```
+Now, when you run this bash script it will gives you the list of the active ip addresses :
+cmd to run script in kali :
+```
+sudo ./ipsweep.sh 10.0.2
 
+```
+Results will be like :
+
+![image](https://github.com/user-attachments/assets/6dfe11fb-8a8e-45ae-bdc7-e4d8c6ceaed7)
+
+if someone put wrong input , we should give them some error let's see:-
+```
+// the updated program will be like
+
+#!/bin/bash
+
+# Check if the IP prefix was provided as an argument
+if [ -z "$1" ]; then
+    echo "You forgot to provide an IP address prefix!"
+    echo "Syntax: ./ipsweep.sh 10.0.2"
+    exit 1
+else
+    # Loop through the IP range
+    for ip in $(seq 1 254); do
+        ping -c 1 $1.$ip | grep "64 bytes" | cut -d " " -f 4 | tr -d " :" &
+    done
+
+    # Wait for all background processes to complete
+    wait
+fi
+
+```
+If ip is not provided result will be like:
+
+![image](https://github.com/user-attachments/assets/894de7f1-0d9a-460a-94db-b5a0d5ae561a)
 
 
 
