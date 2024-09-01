@@ -100,11 +100,9 @@ cmd for that will be:
 ```
 chmod +x ipsweep.sh
 ```
-
                  
-
-| chmod | Changing mod - giving or removing read write execute permissions. |
 | ------ | ------ |
+| chmod | Changing mod - giving or removing read write execute permissions. |
 | +x | means granting execution permissions  |
 | ipseep.sh  | Name of your ping swipper |
 
