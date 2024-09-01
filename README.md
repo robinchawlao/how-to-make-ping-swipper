@@ -45,7 +45,7 @@ Some commands to know before starting scripting :
 
 So the final command after combining all these will be:-
 
-```
+```sh
 cat ip.txt | grep "64 bytes" | cut -d " " -f 4 | tr -d " : "
 ```
 
