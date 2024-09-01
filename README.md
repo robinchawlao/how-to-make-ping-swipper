@@ -146,14 +146,26 @@ else
 fi
 
 ```
-If ip is not provided result will be like:
+If ip address prefix is not provided result will be like:
 
 ![image](https://github.com/user-attachments/assets/894de7f1-0d9a-460a-94db-b5a0d5ae561a)
 
+Suppose you want to save these ip address for further attack you can use command:-
+```
+// this command will save the active ip addresses in the ' ip.txt ' file 
+sudo ./ipsweep.sh 10.0.2 > ip.txt
 
+```
 
+![image](https://github.com/user-attachments/assets/e1388f45-0e41-472b-ab2b-659b2d18daae)
 
-
+Usage of " Ping Swipper " :
+We can use this program in ' nmap scanning ' This Command below will run the Scanning one by one on every ip address and can help in automation of the process :
+```
+for ip in $(cat ip.txt); do nmap $ip& done
+```
+So, this was the whole process to write a bash script to make a PING SWIPPER.
+< ----------------------------------------------------------------------------------------------------->
 
 
 
